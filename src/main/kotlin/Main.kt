@@ -1,7 +1,23 @@
-fun main(args: Array<String>) {
-    println("Hello World!")
+class SmartDevices (deviceName : String, category: String) {
 
-    // Try adding program arguments via Run/Debug configuration.
-    // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
-    println("Program arguments: ${args.joinToString()}")
+    private val dName : String = deviceName
+    private val category : String = category
+
+    fun turnOn(){
+        println("$dName Booting up .... ")
+    }
+
+    fun turnOff(){
+        println("Logging off ....")
+    }
+}
+
+fun main(){
+
+    val smartDevices1 = SmartDevices("Samsung Smart TV", "Entertainment")
+    smartDevices1.turnOn()
+    smartDevices1.turnOff()
+
+    val smartDevices2 = SmartDevices("Apple iPhone", "Personal")
+    smartDevices2.turnOn()
 }
