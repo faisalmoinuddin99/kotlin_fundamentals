@@ -1,0 +1,1 @@
+/home/kakashi/IntelliJ/playground/function_Practice/build/classes/kotlin/main/MainKt$add$1.class:/home/kakashi/IntelliJ/playground/function_Practice/build/classes/kotlin/main/MainKt$mul$1.class:/home/kakashi/IntelliJ/playground/function_Practice/build/classes/kotlin/main/MainKt.class
