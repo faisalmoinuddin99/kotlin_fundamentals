@@ -1,50 +1,38 @@
 fun main() {
-    val trickFunction = trickOrTreat(true)
-    val treatFunction = trickOrTreat(false)
 
-    trickFunction() // No treat !
-    treatFunction() // Have a treat....
+    val coins: (Int) -> String = { quantity ->
+        "$quantity quarter"
+    }
 
-    val runFunction = walkOrRun(true)
-    val walkFunction = walkOrRun(false)
+    val cupCake: (Int) -> String = {
+        "Have a cupcake !"
+    }
 
-    runFunction() // Running...
-    walkFunction() // Walking....
-
+    val human1 = testingFunctionality(true, cupCake)
+    val human2 = testingFunctionality(true, coins)
+    human1()
+    /*
+    Have a cupcake !
+    Welcome, Sir! please sit here...
+    */
 
 }
 
-val trick: () -> Unit = {
-    println("No treat !")
-}
+fun testingFunctionality(isVerified: Boolean, extraFeature: (Int) -> String): () -> Unit {
+    return if (isVerified) {
+        // execute extraFeature
+        println(extraFeature(5))
+        welcomeMessage
 
-val treat: () -> Unit = {
-    println("Have a treat.... ")
-}
-
-fun trickOrTreat(isTrick: Boolean): () -> Unit {
-    return if (isTrick) {
-        trick
     } else {
-        treat
+        message
     }
 }
 
-//function 1
-val walk : () -> Unit = {
-    println("Walking....")
+val welcomeMessage: () -> Unit = {
+    println("Welcome Sir, please sit here...")
 }
 
-//function 2
-val run : () -> Unit = {
-    println("Running...")
-}
-
-// return function from function
-fun walkOrRun(isRun : Boolean) : () -> Unit {
-    return if (isRun){
-        run
-    }else {
-        walk
-    }
+val message: () -> Unit = {
+    println("Thanking you, will see you again.... 🙂")
 }
