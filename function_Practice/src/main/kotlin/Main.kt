@@ -1,16 +1,25 @@
-fun main() {
-    printFinalTemperature(27.0, "Celsius", "Fahrenheit") { 9.0 / 5.0 * it + 32 }
-    printFinalTemperature(350.0, "Kelvin", "Celsius") { it - 273.15 }
-    printFinalTemperature(10.0, "Fahrenheit", "Kelvin") { 5.0 / 9.0 * (it - 32) + 273.15 }
+class Song(title: String, artist: String, yearPublished: Int, playCount: Int){
+
+   private val songTitle = title
+   private val songArtist = artist
+   private val songPublishYear = yearPublished
+   private val playCount = playCount
+    fun popular( ) {
+        if (this.playCount > 1000){
+            println("Popular Song")
+        }else {
+            println("Not so popular song")
+        }
+    }
+
+    fun songDescription(){
+        println("${songTitle}, performed by $songArtist. was released in $songPublishYear")
+    }
 }
 
+fun main(){
+    val brunoSong = Song("We Don't Talk About Bruno", "En canto Cast", 2022, 1_000_000)
+    brunoSong.songDescription() // We Don't Talk About Bruno, performed by En canto Cast. was released in 2022
+    brunoSong.popular() // Popular Song
 
-fun printFinalTemperature(
-    initialMeasurement: Double,
-    initialUnit: String,
-    finalUnit: String,
-    conversionFormula: (Double) -> Double
-) {
-    val finalMeasurement = String.format("%.2f", conversionFormula(initialMeasurement)) // two decimal places
-    println("$initialMeasurement degrees $initialUnit is $finalMeasurement degrees $finalUnit.")
 }
