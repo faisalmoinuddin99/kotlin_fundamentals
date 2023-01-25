@@ -1,27 +1,35 @@
 fun main() {
 
-    val coins: (Int) -> String = { quantity ->
-        "$quantity quarter"
-    }
+//    val coins: (Int) -> String = {
+//        "$it quarter"
+//    }
 
     val cupCake: (Int) -> String = {
         "Have a cupcake !"
     }
 
-    val human1 = testingFunctionality(true, cupCake)
-    val human2 = testingFunctionality(true, coins)
-    human1()
-    /*
-    Have a cupcake !
-    Welcome, Sir! please sit here...
-    */
+    // trailing lambda syntax, we don't need to pass coin as reference variable
+    val human1 = testingFunctionality(true) {
+        "$it quarter"
+    }
+
+    /* repeat is a high-order function, which uses the for loop behind the hood
+    also it uses trailing lambda syntax
+     */
+    repeat(5){
+        human1()
+    }
+
+
 
 }
 
-fun testingFunctionality(isVerified: Boolean, extraFeature: (Int) -> String): () -> Unit {
+fun testingFunctionality(isVerified: Boolean, extraFeature: ((Int) -> String)?): () -> Unit {
     return if (isVerified) {
         // execute extraFeature
-        println(extraFeature(5))
+        if (extraFeature != null) {
+            println(extraFeature(5))
+        }
         welcomeMessage
 
     } else {
