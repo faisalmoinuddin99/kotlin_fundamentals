@@ -1,24 +1,50 @@
-fun main(){
-    val addition = addOrMul(true)
-    val multiplication = addOrMul(false)
+fun main() {
+    val trickFunction = trickOrTreat(true)
+    val treatFunction = trickOrTreat(false)
 
-    addition(10,20)
-    multiplication(10,20)
+    trickFunction() // No treat !
+    treatFunction() // Have a treat....
+
+    val runFunction = walkOrRun(true)
+    val walkFunction = walkOrRun(false)
+
+    runFunction() // Running...
+    walkFunction() // Walking....
+
+
 }
 
-fun addOrMul(isAdd : Boolean) : (Int, Int) -> Unit {
-    return if (isAdd){
-        add
-    }else{
-        mul
+val trick: () -> Unit = {
+    println("No treat !")
+}
+
+val treat: () -> Unit = {
+    println("Have a treat.... ")
+}
+
+fun trickOrTreat(isTrick: Boolean): () -> Unit {
+    return if (isTrick) {
+        trick
+    } else {
+        treat
     }
 }
-val add : (Int, Int) -> Unit = {
-    a,b ->
-    println(a + b)
+
+//function 1
+val walk : () -> Unit = {
+    println("Walking....")
 }
 
-val mul : (Int, Int) -> Unit = {
-    a,b ->
-    println(a * b)
+//function 2
+val run : () -> Unit = {
+    println("Running...")
+}
+
+// return function from function
+fun walkOrRun(isRun : Boolean) : () -> Unit {
+    return if (isRun){
+        run
+    }else {
+        walk
+    }
 }
